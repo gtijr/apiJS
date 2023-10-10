@@ -1,15 +1,11 @@
-const fastify = require("fastify")({ logger: false });
+const express = require("express");
+const app = express();
+const port = process.env.PORT || 3000;
 
-fastify.get("/", async (request, reply) => {
-  return "oi";
+app.get("/", (req, res) => {
+  res.send("oi");
 });
 
-const PORT = process.env.PORT || 3000;
-
-fastify.listen(PORT, (err, address) => {
-  if (err) {
-    console.error(err);
-    process.exit(1);
-  }
-  console.log(`Servidor rodando em ${address}`);
+app.listen(port, () => {
+  console.log(`Servidor rodando na porta ${port}`);
 });
